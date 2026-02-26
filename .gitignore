@@ -1,0 +1,216 @@
+# Rust build artifacts
+/target/
+## Landing preview (build artifacts, not source)
+devit-landing-preview/
+/site/
+**/*.rs.bk
+Cargo.lock
+
+# DevIt runtime
+/.devit/
+/devitd.journal
+/.devit-snapshots/
+
+## Bench
+/bench/
+
+## LLM's&
+.claude
+.claude_desktop
+.claude_project_prompt
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs, journals, debug
+*.log
+*.trace
+*.journal
+*.jsonl
+debug.txt
+
+# Test artifacts
+test_*.txt
+test_*.rs
+test_*.json
+*.test
+coverage/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.old
+tmp/
+temp/
+
+# Archives
+*.tar.gz
+*.tar.bz2
+*.zip
+*.7z
+
+# Performance/benchmark
+perf_*.txt
+stress_*.txt
+bench_*.json
+*.csv
+
+# Screenshots and media
+*.png
+!screenshots/claude-code-devit-studio.png
+!screenshots/devit-avatar-ok.png
+*.jpg
+*.jpeg
+*.gif
+*.mp4
+*.avi
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+
+# Demo/test artifacts
+demo/
+git-hooks/
+
+# R&D analysis scripts
+tools/analysis/rust_analyzer.py
+
+# Obsolete hook installer
+scripts/install_hooks.sh
+
+# Archive directory (cleanup artifacts)
+.archive/
+bench/
+PROJECT_TRACKING/
+docs/archive/
+scripts/testing/
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+System Volume Information/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Audit files (keep in PROJECT_TRACKING)
+audit_*.txt
+audit_*.md
+*_audit.txt
+
+# Local config (contains machine-specific paths — use devit.core.toml.example)
+devit.core.toml
+win_devit.core.toml
+*.local.toml
+devit.user.toml
+
+# Credentials (NEVER commit)
+*.key
+*.pem
+*.cert
+credentials.json
+secrets.toml
+# Security/changelog placeholders (local only)
+#SECURITY.md
+#CHANGELOG.md
+# Security contacts will be published when public disclosure process is defined.
+# Changelog is kept internal until first public release.
+projects/
+
+# ─── R&D / Training / Local only ───────────────────────────
+# Training scripts & LoRA (obsolete — replaced by llama-rpc-launcher rules)
+scripts/train_lora_*
+scripts/merge_lora_*
+scripts/extract_*
+scripts/generate_*
+scripts/prepare_*
+scripts/additional_*
+scripts/merge_and_export.py
+scripts/test_grammar.sh
+scripts/test_lora_model.py
+scripts/watch_and_train.sh
+scripts/unsloth_compiled_cache/
+
+# ML models & data (local only, too large for git)
+models/
+data/
+
+# R&D tracking (local only)
+conformance/
+projects_tracking/
+nvideo-docs-export/
+
+# Personal / home dirs
+.home/
+maison/
+
+# Private local artifacts (never commit)
+config/
+scripts/extrem-audit-scan.sh
+
+# Private docs / R&D notes (never commit)
+docs/private/
+docs/rnd/
+docs/r&d/
+docs/experimental/
+docs/windows_daemon_setup.md
+**/*.private.md
+**/*_private.md
+**/*-private.md
+
+# ─── Not public yet ────────────────────────────────────────
+# Chat crate (WIP)
+crates/chat/
+# Llama RPC launcher (WIP)
+crates/llama-rpc-launcher/
+# Forge crates (WIP R&D)
+crates/devit-forge/
+crates/forge-daemon/
+crates/mcp-tools/src/forge.rs
+# Studio tests (not ready)
+crates/studio/tests/
+# AIRCP spec draft
+AIRCP-SPEC-v0.md
+# Claude instructions (local)
+CLAUDE.md
+
+# ─── Generic ignores ─────────────────────────────────────
+**/node_modules/
+**/ROADMAP.md
+
+# ─── Dist binaries (never in git) ──────────────────────────
+dist/pkg-gnu/devit
+dist/pkg-gnu/devitd
+dist/pkg-gnu/mcp-server
+dist/pkg-musl/devit
+dist/pkg-musl/devitd
+dist/pkg-musl/mcp-server
+dist/pkg-static/
+dist/SHA256SUMS
+dist/*.sha256
+
+# DevIt internal runtime (in crate workspaces)
+crates/.devit/
+
+# Local launch scripts (contain machine paths + secrets)
+run_daemon.sh
+
+# Stray test files
+test-update.txt

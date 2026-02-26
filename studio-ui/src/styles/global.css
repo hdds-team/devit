@@ -1,0 +1,96 @@
+/* devit-studio dark theme */
+
+:root {
+  /* Background */
+  --bg-primary: #1e1e1e;
+  --bg-secondary: #252526;
+  --bg-tertiary: #2d2d30;
+  --bg-hover: #3c3c3c;
+  --bg-active: #094771;
+  
+  /* Text */
+  --text-primary: #d4d4d4;
+  --text-secondary: #9d9d9d;
+  --text-muted: #6d6d6d;
+  
+  /* Borders */
+  --border: #3c3c3c;
+  --border-focus: #007acc;
+  
+  /* Accents */
+  --accent: #007acc;
+  --accent-hover: #1c97ea;
+  --success: #4ec9b0;
+  --warning: #dcdcaa;
+  --error: #f14c4c;
+  
+  /* Ghost cursor */
+  --ghost-cursor: #9b59b6;
+  --ghost-text: rgba(155, 89, 182, 0.6);
+  
+  /* Editor */
+  --editor-bg: #1e1e1e;
+  --editor-gutter: #2d2d30;
+  --editor-line-active: #2d2d30;
+  
+  /* Chat */
+  --chat-user-bg: #2d2d30;
+  --chat-ai-bg: #252526;
+  
+  /* Font */
+  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  --font-sans: system-ui, -apple-system, sans-serif;
+  --font-size: 14px;
+  --font-size-sm: 12px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font-sans);
+  font-size: var(--font-size);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-hover);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Focus styles */
+:focus {
+  outline: 1px solid var(--border-focus);
+  outline-offset: -1px;
+}
+
+/* Common utilities */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}

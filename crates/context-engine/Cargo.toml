@@ -1,0 +1,52 @@
+[package]
+name = "context-engine"
+version = "0.1.0"
+edition = "2021"
+description = "Multi-file context, RAG/embeddings, and diff management for DevIt"
+authors = ["DevIt Team"]
+
+[dependencies]
+# Async runtime
+tokio = { version = "1", features = ["full"] }
+tokio-util = "0.7"
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Vector store - using SQLite for simplicity and fewer dependencies
+rusqlite = { version = "0.32", features = ["bundled"] }
+zerocopy = "0.7"
+
+# Tree-sitter for AST-aware chunking (aligned with workspace)
+tree-sitter = "0.22"
+tree-sitter-rust = "0.21"
+tree-sitter-python = "0.21"
+tree-sitter-c = "0.21"
+tree-sitter-cpp = "0.21"
+tree-sitter-javascript = "0.21"
+tree-sitter-typescript = "0.21"
+
+# HTTP client for Ollama embeddings
+reqwest = { version = "0.12", features = ["json"] }
+
+# Error handling
+thiserror = "2"
+anyhow = "1"
+
+# Async trait support
+async-trait = "0.1"
+futures = "0.3"
+
+# Utilities
+tracing = "0.1"
+uuid = { version = "1", features = ["v4"] }
+walkdir = "2"
+globset = "0.4"
+
+# Diff/patch utilities
+similar = "2"
+
+[dev-dependencies]
+tokio-test = "0.4"
+tempfile = "3"

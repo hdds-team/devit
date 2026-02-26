@@ -1,0 +1,52 @@
+# DevIt Core Configuration — copy to devit.core.toml and adjust paths
+#
+# This file is local to your machine. Never commit devit.core.toml itself.
+
+[workspace]
+sandbox_root = "/path/to/your/workspace"
+allowed_paths = [
+    "/path/to/your/workspace",
+]
+
+[daemon]
+socket = "/tmp/devitd.sock"
+mode = "daemon"
+
+[orchestration.capabilities.screenshot]
+enabled = true
+rate_limit = "10/minute"
+
+[orchestration.capabilities.desktop]
+enabled = true
+keyboard = true
+mouse = true
+rate_limit = "100/minute"
+
+[tools.screenshot]
+enabled = true
+backend = "scrot"
+format = "png"
+output_dir = ".devit/screenshots"
+
+[tools.desktop]
+enabled = true
+
+[workers.claude_code]
+type = "cli"
+binary = "claude"
+args = ["--print", "--output-format", "json", "--dangerously-skip-permissions"]
+timeout = 60
+parse_mode = "json"
+
+[workers.ollama_test]
+type = "cli"
+binary = "ollama"
+args = ["run", "{model}", "--format", "json"]
+timeout = 256
+parse_mode = "json"
+default_model = "mistral-nemo:12b"
+allowed_models = ["llama3:8b", "llama3.3:70b", "mistral-nemo:12b"]
+
+[orchestration.notify_hook]
+enabled = false
+# command = "/path/to/your/notify-hook"

@@ -1,0 +1,33 @@
+name: ci (disabled)
+on:
+  # Temporarily disabled automatic CI. Manual runs only.
+  workflow_dispatch:
+
+jobs:
+  linux:
+    if: false  # disabled for now
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: Format
+        run: cargo fmt --all -- --check
+      - name: Clippy (focused)
+        run: |
+          cargo clippy -p mcp-tools --all-features -- -D warnings
+          cargo clippy -p devit-common --all-features -- -D warnings
+      - name: Test (mcp-tools shape-only)
+        run: cargo test -p mcp-tools --features test-utils
+      - name: Test (workspace libs)
+        run: cargo test --workspace --lib
+
+  windows:
+    if: false  # disabled for now
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: Build
+        run: cargo build --workspace --release

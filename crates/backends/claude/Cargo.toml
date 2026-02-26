@@ -1,0 +1,22 @@
+# -----------------------------
+# crates/backends/claude/Cargo.toml
+# Claude CLI backend (Max subscription via `claude` binary)
+# -----------------------------
+[package]
+name = "devit-claude"
+version.workspace = true
+edition = "2021"
+
+[dependencies]
+anyhow = { workspace = true }
+async-trait = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+which = { workspace = true }
+devit-backend-core = { path = "../core" }
+tracing-subscriber = { workspace = true }
+
+[[example]]
+name = "test_chat"
