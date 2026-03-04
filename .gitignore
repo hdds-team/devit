@@ -35,9 +35,9 @@ Cargo.lock
 debug.txt
 
 # Test artifacts
-test_*.txt
-test_*.rs
-test_*.json
+/test_*.txt
+/test_*.rs
+/test_*.json
 *.test
 coverage/
 
