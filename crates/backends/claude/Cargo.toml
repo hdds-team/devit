@@ -19,4 +19,4 @@ devit-backend-core = { path = "../core" }
 tracing-subscriber = { workspace = true }
 
 [[example]]
-name = "test_chat"
+name = "chat_example"
