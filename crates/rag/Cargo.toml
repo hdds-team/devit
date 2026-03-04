@@ -1,0 +1,26 @@
+[package]
+name = "devit-rag"
+version.workspace = true
+edition = "2021"
+
+[[bin]]
+name = "devit-rag"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = { workspace = true }
+clap = { workspace = true }
+tokio = { workspace = true }
+tokio-util = "0.7"
+serde = { workspace = true }
+serde_json = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+context-engine = { path = "../context-engine" }
+devit-backend-core = { path = "../backends/core" }
+devit-ollama = { path = "../backends/ollama" }
+dirs = "5"
+rusqlite = { version = "0.32", features = ["bundled"] }
+
+[dev-dependencies]
+tempfile = { workspace = true }

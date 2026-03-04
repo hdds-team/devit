@@ -163,6 +163,7 @@ maison/
 
 # Private local artifacts (never commit)
 config/
+scripts/private/
 scripts/extrem-audit-scan.sh
 
 # Private docs / R&D notes (never commit)

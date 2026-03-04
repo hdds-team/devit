@@ -20,13 +20,11 @@ members = [
     "crates/mcp-tools",
     "crates/mcp-server",
     "crates/orchestration",
-    "crates/chat",
     "crates/context-engine",
     "devitd",
     "devitd-client",
     "crates/studio",
-    "crates/devit-forge",
-    "crates/forge-daemon",
+    "crates/rag",
 ]
 resolver = "2"
 
