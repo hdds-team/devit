@@ -31,12 +31,12 @@ CARGO_DEFAULT_OPTS := -j $(JOBS)
 .PHONY: fmt fmt-check fmt-fix clippy lint lint-all test test-cli build build-release smoke ci ci-local check verify help coverage \
         build-cli run-cli release-cli check-cli ci-cli help-cli plugin-echo-sum plugin-echo-sum-run \
         e2e e2e-plugin e2e-runner lint-flags test-impacted clean clean-reports clean-artifacts reports \
-        run-chat build-chat studio studio-ui studio-app
+        run-chat build-chat studio studio-ui studio-app studio-deps
 
 help:
 	@echo "Targets: fmt | fmt-check | fmt-fix | clippy | lint | test | test-cli | build | build-release | smoke | check | verify | ci | coverage | e2e-runner"
 	@echo "Chat: build-chat | run-chat"
-	@echo "Studio: studio | studio-ui | studio-app"
+	@echo "Studio: studio | studio-ui | studio-app | studio-deps | studio-fresh"
 
 fmt:
 	cargo fmt --all
@@ -96,8 +96,23 @@ studio-app:
 	@echo "🖥️  Starting Tauri app (vite must be running on :5173)..."
 	cd crates/studio && cargo tauri dev
 
+# Install studio-ui npm dependencies (skips if node_modules up to date)
+studio-deps:
+	@if ! command -v node >/dev/null 2>&1; then \
+		echo "Error: node not found. Install Node.js (>=18) first."; \
+		echo "  curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -"; \
+		echo "  sudo apt install -y nodejs"; \
+		exit 1; \
+	fi
+	@if [ ! -d studio-ui/node_modules ] || [ studio-ui/package.json -nt studio-ui/node_modules/.package-lock.json ]; then \
+		echo "Installing studio-ui npm dependencies..."; \
+		cd studio-ui && npm install; \
+	else \
+		echo "studio-ui dependencies up to date."; \
+	fi
+
 # Pre-build backends before starting studio (ensures latest code)
-studio-build:
+studio-build: studio-deps
 	@echo "🔨 Building backends..."
 	cargo build --release -p devit-lmstudio -p devit-ollama -p devit-llama-cpp -p devit-backend-core
 
